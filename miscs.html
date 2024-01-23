@@ -81,9 +81,60 @@
       }
 
       .video-grid video {
-        width: 500px; 
-        height: 500px;
+        width: 400px; 
+        height: 400px;
         margin-left: 300px; /* 좌측 여백 크기 설정 */
+      }
+      .photo-grid img {
+        width: calc(50% - 5px); /* Adjust width for 2 images per row with 10px total gap */
+        height: auto; /* Maintain aspect ratio */
+      }    
+      .photo-grid video {
+        width: calc(50% - 5px); /* Adjust video to fit the same width as images with 5px gap */
+        height: auto; /* Maintain aspect ratio */
+      }
+      .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      
+      /* 첫번째 행에는 두 개의 이미지가 가로로 나란히 */
+      .photo-grid > img:nth-child(1), .photo-grid > img:nth-child(2) {
+        width: calc(50% - 5px); /* 화면 너비의 절반에서 5px 간격 제외 */
+        height: auto; /* 가로 세로 비율 유지 */
+      }
+
+      /* 두번째 행에는 두 개의 이미지와 하나의 비디오가 가로로 나란히 */
+      .photo-grid > img:nth-child(3), .photo-grid > img:nth-child(4), .photo-grid > video {
+        width: calc(33.33% - 5px); /* 화면 너비의 1/3에서 5px 간격 제외 */
+        height: auto; /* 가로 세로 비율 유지 */
+      }
+
+      /* Ensure the video in the second row takes up the remaining space after two images */
+      .photo-grid > video {
+        width: calc(100% - (2 * ((100% - 10px) / 3) + 10px)); /* Adjust the width to take the remaining space */
+        height: auto; /* Maintain the aspect ratio */
+      }
+
+      .photo-grid > img, .photo-grid > video {
+        margin-bottom: 10px;
+      }
+
+      /* Adjust the first image in each row to align with 'Juhee Han' */
+      .photo-grid > img:first-child {
+        margin-left: 0px; 
+      }
+
+      .photo-grid > img:first-child, .photo-grid > img:nth-child(3) {
+        margin-left: 150px;
+      }
+      .photo-grid > img:first-child, .photo-grid > img:nth-child(3) {
+        margin-left: 128px;
+      }
+      .photo-grid > img:nth-child(2) {
+        margin-right: calc(100% - 950px);
       }
     </style>
 </head>
@@ -103,39 +154,28 @@
         <div class="media-content">
             <!-- 사진 첨부 -->
             <div class="photo-content">
-                <h2>Photo Gallery</h2>
-                <div class="photo-grid" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                <img src="./assets/images/IMG_20190720_230448_971_4.jpg" alt="Sample Photo 1" style="width: 45%; height: auto;" />
-                <img src="./assets/images/20240122_211345.png" alt="Sample Photo 2" style="width: 45%; height: auto;" />
-                <img src="./assets/images/20190528_211807_nightflight.jpg" alt="Sample Photo 2"style="width: 45%; height: auto;" />
-                <img src="./assets/images/20200302_160446_complete.jpg" alt="Sample Photo 2" style="width: 45%; height: auto;" />
-                <!-- 추가적인 사진들... -->
+                <!-- <h2>Photo Gallery</h2> -->
+                <div class="photo-grid" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content:left; margin-left: 50px;">
+                  <img src="./assets/images/IMG_20190720_230448_971_4.jpg" alt="Sample Photo 1" style="width: 200px; height: 200px;" />
+                  <img src="./assets/images/20190528_211807_nightflight.jpg" alt="Sample Photo 2"style="width: 200px; height: 200px" />
+                  <img src="./assets/images/20240122_211345.png" alt="Sample Photo 3" style="width: 280px; height: 200px;" />
+                  <img src="./assets/images/20200302_160446_complete.jpg" alt="Sample Photo 4" style="width: 200px; height: 200px;" />
+                  <video controls style="width: 200px; height: 200px;">
+                    <source src="./assets/images/VID_28261119_130958_502_soloflight.mp4" type="video/mp4">
+                  </video>
+                </div>
             </div>
         </div>
 
-            <!-- 동영상 첨부 -->
-            <!-- Video Content Adjusted for Two Videos per Row -->
-<!-- Video Content Adjusted for Two Videos per Row -->
-<div class="video-content">
-  <h2>Video Gallery</h2>
-  <div class="video-grid" style="display: flex; flex-wrap: wrap; justify-content: center;">
-      <video controls style="width: 45%; margin: 0 0 0px 0;">
-          <source src="./assets/images/VID_28261119_130958_502_soloflight.mp4" type="video/mp4">
-      </video>
-      <video controls style="width: 45%; margin: 0 0 0px 0;">
-          <source src="./assets/images/kakaotalk_1563652752496_5.mp4" type="video/mp4">
-      </video>
-      <!-- <video controls style="width: 45%; margin: 0 0 0px 0;">
-          <source src="./assets/images/20190828_195706_3.mp4" type="video/mp4">
-      </video>
-      <video controls style="width: 45%; margin: 0 0 0px 0;">
-          <source src="./assets/images/20190921_115126_1.mp4" type="video/mp4">
-      </video> -->
-      <!-- Additional videos... -->
-  </div>
-</div>
 
-    </div>
+        <div class="text-content" style="text-align: left; margin-top: 40px; margin-left: 190px;">
+          <p>Thank you for taking the time to explore my website! Since childhood, I've been driven by a sense of adventure, a willingness to embrace challenges, and an insatiable curiosity about the world's many facets. My overarching dream has always been to contribute my knowledge to society, and I'm actively pursuing this goal.
+            <br>
+            Currently, I'm dedicated to my studies at Sungkyunkwan University, where I'm not only acquiring knowledge but also actively involved in activities related to educating students with disabilities. This journey is a testament to my commitment to making a meaningful impact on others.
+          </p>
+      </div>
+  </div>
+    
 
     <!-- Scripts -->
     <script src="vendor/jquery/jquery.min.js"></script>
